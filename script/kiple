@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+'use strict';
+
+/*commander：<>包裹的options是必传的，使用命令的时候必须要传值的，[]包裹的则是可选的*/
+var commander = require('commander')
+
+var meta = require('../package.json')
+
+commander
+	.version(`v${meta.version}`, '-v, --version')
+
+/**
+ * 定义命令sugar start
+ * 简写：sugar s
+ * */
+commander
+	.command('start')
+	.alias('s')
+	.description('start command description')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
+	.action(function () {
+		console.log('~~~~~~~~这里面是执行 sugar start 命令的具体逻辑~~~~~~~~~~~~~')
+	})
+
+/**
+ * 定义命令 sugar test
+ * 简写：sugar t
+ * 必填参数desc1
+ * 例如：
+ * sugar test 哈哈哈哈 或者 sugar t 哈哈哈
+ * */
+commander
+	.command('test <desc1>')                       // 定义命令，<>包裹的是必传的，否则会报错
+	.alias('t')   // 别名
+	.action(function (desc1) {
+		console.log('~~~~~~~~~~~~这里面是执行 sugar test 命令的具体逻辑~~~~~~~~~~')
+		console.log("参数，desc：", desc1)
+	})
+
+/**
+ * 定义命令 sugar release
+ * 简写：sugar r
+ * 可以选参数desc1 desc2
+ * 可选option，-r,-b,--no-sauce
+ * 例如：
+ * sugar release
+ * sugar release 我是desc1
+ * sugar release 我是desc1 我是desc2 -r 我是-r参数
+ * sugar release 我是desc1 我是desc2 -r   // 会报错因为缺少-r参数
+ * sugar release 我是desc1 我是desc2 -r 我是-r参数 -b
+ * */
+commander
+	.command('release [desc1] [desc2]')                       // 定义命令，[]包裹的则是可选的
+	.option('-r, --recursive <myVar>', '-r选项描述')   // 定义option，<>包裹的是必传的，也就是-r后面要有值，例如：sugar r -r 哈哈，sugar r -r(会报参数不够错误)
+	.option('-b, --bbb [myVar2]', '-b选项描述')        // 定义option，[]包裹的是可选的，也就是-b后面的值可选，例如：sugar r -b 哈哈 或者 sugar r -b
+	.option('--no-sauce', '加了--no前缀，默认sauce为true，使用命令时加了--no-sauce，那sauce为false')
+	.alias('r')   // 别名
+	.action(function (desc1, desc2, cmd) {
+		// desc1
+		console.log('~~~~~~~~~~~~这里面是执行 sugar release 命令的具体逻辑~~~~~~~~~~~')
+		console.log("desc：", desc1, desc2)
+		console.log('cmd：', cmd.recursive, cmd.bbb, cmd.sauce)
+	})
+
+// 除上面定义的命令外的其他的命令，例如：sugar foo，sugar bar等等
+commander
+	.command('*')
+	.action(function (task) {
+		log.info('~~~~~~~~~~~执行没有定义的命令时，就会走到这里，例如：sugar foo ~~~~~~~~~~~')
+	})
+// commander解析传入的参数
+commander.parse(process.argv)
+
+
+if (!commander.args.length) {
+	// 没有参数的时候
+	console.log('~~~~~~~~~~~一个参数都没有的时候~~~~~~~~~~~')
+}
