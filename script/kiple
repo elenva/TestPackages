@@ -19,7 +19,7 @@ commander
 	.description('start command description')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
 		console.log('开启服务器,监听端口8080');
-		exec(`npm run dev`, (err, stdout, stderr) => {
+		exec(`npx webpack serve --open`, (err, stdout, stderr) => {
 			if(err) {
 					console.log(err);
 					return;
