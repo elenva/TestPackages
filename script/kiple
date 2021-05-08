@@ -3,7 +3,7 @@
 
 /*commander：<>包裹的options是必传的，使用命令的时候必须要传值的，[]包裹的则是可选的*/
 var commander = require('commander')
-
+const { exec } = require('child_process');
 var meta = require('../package.json')
 
 commander
@@ -18,7 +18,7 @@ commander
 	.alias('s')
 	.description('start command description')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
-		console.log('~~~~~~~~这里面是执行 sugar start 命令的具体逻辑~~~~~~~~~~~~~')
+		exec(`webpack serve --open`);
 	})
 
 /**
