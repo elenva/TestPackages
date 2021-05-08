@@ -18,7 +18,7 @@ commander
 	.alias('s')
 	.description('start command description')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
-		exec(`webpack serve --open`);
+		exec(`npm run webpack serve --open`);
 	})
 
 /**
