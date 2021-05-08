@@ -1,5 +1,4 @@
 const Test = () => {
-  console.log('test')
-}
-
+  console.log('test123')
+};
 export default Test;

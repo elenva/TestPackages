@@ -18,15 +18,33 @@ commander
 	.alias('s')
 	.description('start command description')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
-		console.log('开启服务器,监听端口8080');
-		exec(`npx webpack serve --open`, (err, stdout, stderr) => {
-			if(err) {
-					console.log(err);
-					return;
-			}
-			console.log(`stdout: ${stdout}`);
-			console.log(`stderr: ${stderr}`);
-		})
+		// console.log('开启服务器,监听端口8080');
+		// exec(`npx webpack serve --open`, (err, stdout, stderr) => {
+		// 	if(err) {
+		// 			console.log(err);
+		// 			return;
+		// 	}
+		// 	console.log(`stdout: ${stdout}`);
+		// 	console.log(`stderr: ${stderr}`);
+		// })
+		const webpackDevServer = require('webpack-dev-server');
+		const webpack = require('webpack');
+
+		const config = require('./webpack.common');
+		const options = {
+			contentBase: './dist',
+			hot: true,
+			host: 'localhost',
+		};
+
+		webpackDevServer.addDevServerEntrypoints(config, options);
+		const compiler = webpack(config);
+		const server = new webpackDevServer(compiler, options);
+
+		server.listen(5000, 'localhost', () => {
+			console.log('dev server listening on port 5000');
+		});
+
 	})
 /**
  * 定义命令 sugar test
