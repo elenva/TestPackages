@@ -1,9 +1,6 @@
 const path = require('path');
 const rules = require('./rules');
 const webpack = require('webpack');
-const HappyPack = require('happypack');
-const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 module.exports = {
   entry: {
@@ -14,16 +11,6 @@ module.exports = {
       React: 'react',
       ReactDom: 'react-dom',
     }),
-    new HappyPack({
-      id: 'happyBabel',
-      loaders: [
-        {
-          loader: 'babel-loader?cacheDirectory=true',
-        },
-      ],
-      threadPool: happyThreadPool,
-      verbose: true,
-    })
   ],
   output: {
     filename: '[name].bundle.js',

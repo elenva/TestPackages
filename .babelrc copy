@@ -7,7 +7,7 @@
   "plugins": [
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-class-properties",
-    "./scripts/plugins/auto-css-modules.js",
+    // "./scripts/plugins/auto-css-modules.js",
     "lodash",
     ["import", {
       "libraryName": "antd",
