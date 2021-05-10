@@ -30,14 +30,15 @@ commander
 			contentBase: path.join(process.cwd(), 'dist'),
 			hot: true,
 			compress: true,
-			bonjour: true,
 			clientLogLevel: 'warn',
 			host: '0.0.0.0',
 			after: function (app, server, compiler) {
 				// do fancy stuff
-				log('app', app);
-				log('server', server);
-				log('compiler', compiler);
+				log(app);
+				log('-------------');
+				log(server);
+				log('-------------');
+				log(compiler);
 			},
 		};
 
