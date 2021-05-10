@@ -1,7 +1,7 @@
 const path = require('path');
 const rules = require('./rules');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+console.log('dist', path.join(process.cwd(), 'dist'));
 module.exports = {
   entry: {
     app: `${process.cwd()}/src/index.js`,
@@ -17,7 +17,7 @@ module.exports = {
     clean: true,
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: path.join(process.cwd(), 'dist'),
     hot: true
   },
 };
