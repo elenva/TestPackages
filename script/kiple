@@ -100,7 +100,7 @@ commander
 // 		log.info('~~~~~~~~~~~执行没有定义的命令时，就会走到这里，例如：sugar foo ~~~~~~~~~~~')
 // 	})
 // // commander解析传入的参数
-// commander.parse(process.argv)
+commander.parse(process.argv)
 
 
 // if (!commander.args.length) {
