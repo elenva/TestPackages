@@ -13,7 +13,7 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js',
-    path: path.join(process.cwd(), 'dist'),
+    path: path.resolve(__dirname,'dist'),
     clean: true,
     pathinfo: false,
   },
