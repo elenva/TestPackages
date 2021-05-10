@@ -1,7 +1,8 @@
 const path = require('path');
 const rules = require('./rules');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-console.log('dist', path.join(process.cwd(), 'dist'));
+const webpack = require('webpack');
+
 module.exports = {
   entry: {
     app: `${process.cwd()}/src/index.js`,
