@@ -48,7 +48,9 @@ commander
 	.description('编译kipleFE 项目')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
 		const compiler = webpack(prod);
-		compiler.run();
+		compiler.run((err, status) => {
+			console.log(status)
+		});
 	})
 /**
  * 定义命令 sugar test
