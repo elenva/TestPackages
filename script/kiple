@@ -30,16 +30,8 @@ commander
 			contentBase: path.join(process.cwd(), 'dist'),
 			hot: true,
 			compress: true,
-			clientLogLevel: 'warn',
+			clientLogLevel: 'silent',
 			host: '0.0.0.0',
-			after: function (app, server, compiler) {
-				// do fancy stuff
-				log(app);
-				log('-------------');
-				log(server);
-				log('-------------');
-				log(compiler);
-			},
 		};
 
 		webpackDevServer.addDevServerEntrypoints(config, options);
