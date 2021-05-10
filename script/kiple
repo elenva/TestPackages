@@ -11,6 +11,7 @@ const webpackDevServer = require('webpack-dev-server');
 const webpack = require('webpack');
 
 const config = require('./webpack.dev');
+const prod = require('./webpack.prod.js');
 
 commander
 	.version(`v${meta.version}`, '-v, --version')
@@ -45,7 +46,11 @@ commander
 	.alias('b')
 	.description('编译kipleFE 项目')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
-		exec(`npx webpack --config webpack.prod.js`);
+		const compiler = webpack({
+			// [配置对象](/configuration/)
+			config: prod
+		});
+		compiler.run();
 	})
 /**
  * 定义命令 sugar test
