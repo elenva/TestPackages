@@ -8,9 +8,6 @@ module.exports = {
     app: `${process.cwd()}/src/index.js`,
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Production',
-    }),
     new webpack.ProvidePlugin({
       React: 'react',
     }),
