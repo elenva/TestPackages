@@ -13,12 +13,19 @@ module.exports = {
       ReactDom: 'react-dom',
     }),
     new HappyPack({
-      loaders: [ 'babel-loader?presets[]=es2015' ]
+      id: 'happyBabel',
+      loaders: [
+        {
+          loader: 'babel-loader?cacheDirectory=true',
+        },
+      ],
+      threadPool: happyThreadPool,
+      verbose: true,
     })
   ],
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname,'dist'),
+    path: path.join(process.cwd(), 'dist'),
     clean: true,
     pathinfo: false,
   },
