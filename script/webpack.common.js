@@ -22,6 +22,9 @@ module.exports = {
     contentBase: path.join(process.cwd(), 'dist'),
     hot: true
   },
+  module: {
+    rules
+  },
   optimization: {
     runtimeChunk: 'single',
     removeAvailableModules: false,
