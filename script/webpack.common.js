@@ -10,6 +10,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Production',
     }),
+    new webpack.ProvidePlugin({
+      React: 'react',
+    }),
   ],
   output: {
     filename: '[name].bundle.js',
@@ -19,5 +22,8 @@ module.exports = {
   devServer: {
     contentBase: path.join(process.cwd(), 'dist'),
     hot: true
+  },
+  optimization: {
+    usedExports: true,
   },
 };
