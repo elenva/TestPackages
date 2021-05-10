@@ -45,7 +45,7 @@ commander
 	.alias('b')
 	.description('编译kipleFE 项目')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
-		exec(`webpack --config webpack.prod.js`);
+		exec(`npx webpack --config webpack.prod.js`);
 	})
 /**
  * 定义命令 sugar test
