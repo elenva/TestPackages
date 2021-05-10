@@ -1,6 +1,7 @@
 const path = require('path');
 const rules = require('./rules');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
 
 module.exports = {
   entry: {
@@ -11,6 +12,9 @@ module.exports = {
       React: 'react',
       ReactDom: 'react-dom',
     }),
+    new HappyPack({
+      loaders: [ 'babel-loader?presets[]=es2015' ]
+    })
   ],
   output: {
     filename: '[name].bundle.js',

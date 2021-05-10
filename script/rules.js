@@ -1,4 +1,3 @@
-const happypack = require('happypack');
 const path = require('path');
 
 module.exports = [
@@ -18,16 +17,15 @@ module.exports = [
     // 把对.js 的文件处理交给id为happyBabel 的HappyPack 的实例执行
     loader: 'happypack/loader',
     exclude: /node_modules/,
-    options: {
-      id: 'happyBabel'
-    }
   },
   {
     test: /\.(css|less)$/,
-    loader: 'cssLoader'
+    exclude: /node_modules/,
+    loader: 'css-loader'
   },
   {
     test: /\.(png|jpg|gif)$/,
+    exclude: /node_modules/,
     loader: 'url-loader',
     options: {
       limit: 8192,
@@ -36,6 +34,7 @@ module.exports = [
   },
   {
     test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    exclude: /node_modules/,
     use: [
       {
         loader: 'url-loader',
@@ -48,6 +47,7 @@ module.exports = [
   },
   {
     test: /\.svg$/,
+    exclude: /node_modules/,
     loader: 'svg-inline-loader',
   },
 ]
