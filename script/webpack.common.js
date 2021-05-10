@@ -15,12 +15,26 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.join(process.cwd(), 'dist'),
     clean: true,
+    pathinfo: false,
   },
   devServer: {
     contentBase: path.join(process.cwd(), 'dist'),
     hot: true
   },
   optimization: {
+    runtimeChunk: 'single',
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
     usedExports: true,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 };

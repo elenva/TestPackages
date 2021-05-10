@@ -16,20 +16,4 @@ module.exports = merge(common, {
       title: 'Prod',
     }),
   ],
-  optimization: {
-    runtimeChunk: 'single',
-    removeAvailableModules: false,
-    removeEmptyChunks: false,
-    splitChunks: false,
-    pathinfo: false,
-  },
-  splitChunks: {
-    cacheGroups: {
-      vendor: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        chunks: 'all',
-      },
-    },
-  },
 });
