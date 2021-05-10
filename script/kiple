@@ -29,7 +29,16 @@ commander
 		const options = {
 			contentBase: path.join(process.cwd(), 'dist'),
 			hot: true,
+			compress: true,
+			bonjour: true,
+			clientLogLevel: 'warn',
 			host: '0.0.0.0',
+			after: function (app, server, compiler) {
+				// do fancy stuff
+				log('app', app);
+				log('server', server);
+				log('compiler', compiler);
+			},
 		};
 
 		webpackDevServer.addDevServerEntrypoints(config, options);
@@ -37,6 +46,7 @@ commander
 		const server = new webpackDevServer(compiler, options);
 
 		server.listen(port || 5000, 'localhost', () => {
+			exec('cls');
 			log(`dev server listening on port ${port || 5000}`);
 		});
 
@@ -49,7 +59,7 @@ commander
 	.action(function () {
 		const compiler = webpack(prod);
 		compiler.run((err, status) => {
-			log('编译中');
+			log('编译中...');
 			compiler.close(() => {
 				log('编译完成');
 			})
