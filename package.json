@@ -1,7 +1,4 @@
 {
-  "scripts": {
-    "dev": "webpack serve --open"
-  },
   "bin": {
     "kipleFE": "script/kiple"
   },
