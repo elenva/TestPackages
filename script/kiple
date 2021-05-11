@@ -50,7 +50,11 @@ commander
 	.description('编译kipleFE 项目')            // 命令描述，会显示在帮助信息里，执行sugar --help可以看到
 	.action(function () {
 		const compiler = webpack(prod);
-		compiler.run((err, status) => {
+		compiler.run((err, stats) => {
+			console.log(stats.toString({
+				chunks: false,  // 使构建过程更静默无输出
+				colors: true
+			}))
 			compiler.close(() => {
 				log('编译完成');
 			})
