@@ -2,11 +2,15 @@ const path = require('path');
 
 module.exports = [
   {
-    test: /\.(ts|tsx)$/,
-    use: 'ts-loader',
+    test: /\.(ts|tsx|js|jsx)$/,
     exclude: /node_modules/,
-    include: path.join(process.cwd(), 'src'),
+    use: ['babel-loader']
   },
+  {
+    test: /\.(ts|tsx)$/,
+    exclude: /node_modules/,
+    use: ['ts-loader']
+  }
   // {
   //   test: /\.(js|mjs|jsx|ts|tsx)$/,
   //   enforce: 'pre',

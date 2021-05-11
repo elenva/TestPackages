@@ -8,8 +8,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      React: 'react',
-      ReactDom: 'react-dom',
+      // React: 'react',
+      // ReactDom: 'react-dom',
     }),
   ],
   output: {
@@ -24,6 +24,9 @@ module.exports = {
   },
   module: {
     rules
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
   },
   optimization: {
     runtimeChunk: 'single',
