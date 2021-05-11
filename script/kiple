@@ -25,11 +25,10 @@ commander
 		const options = {
 			contentBase: path.join(process.cwd(), 'dist'),
 			hot: true,
-			hotOnly: true,
 			compress: true,
 			overlay: true,
 			host: '0.0.0.0',
-			// open: true,
+			open: true,
 			disableHostCheck: false,
 			// noInfo: true,
 			progress: true,
